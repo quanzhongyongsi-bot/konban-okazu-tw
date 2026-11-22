@@ -33,6 +33,7 @@ header{
 }
 header .ttl{font-size:24px; font-weight:800; letter-spacing:.02em;}
 header .ttl .em{color:var(--acc);}
+header .ttl .zhName{font-size:16px; color:#A9713B;}
 header .sub{font-size:15px; color:var(--sub); margin-top:2px;}
 main{flex:1 1 auto; width:100%; max-width:640px; margin:0 auto; padding:14px 14px 28px; overflow-y:auto; -webkit-overflow-scrolling:touch;}
 .view{display:none;}
@@ -282,6 +283,7 @@ body::after{ content:""; position:fixed; top:0; left:0; right:0; bottom:calc(78p
 .catChip{ display:inline-block; font-size:11.5px; font-weight:800; padding:2px 9px; border-radius:999px; color:#fff; }
 .readBadge{ font-size:11.5px; font-weight:800; padding:2px 8px; border-radius:999px; background:#e8f6e9; color:#2e7d32; }
 .unreadBadge{ font-size:11.5px; font-weight:800; padding:2px 8px; border-radius:999px; background:#fff3e0; color:#e65100; }
+.twBadge{ font-size:11.5px; font-weight:800; padding:2px 8px; border-radius:999px; background:#fde7f0; color:#c2185b; }
 .bookCard{ background:linear-gradient(160deg,rgba(255,253,247,.62),rgba(255,241,222,.62)); }
 .readerBody{ font-size:17.5px; line-height:1.95; background:#fffdf8; border:1.5px solid #f0e2cf; border-radius:14px; padding:22px 18px; min-height:320px; box-shadow:inset 0 0 24px rgba(214,164,90,.10); }
 .readerBody p{ margin:0 0 1em; }
@@ -328,7 +330,7 @@ body.panelBeige #mascotBubble::after{ background:#FFF3D6; }
 </head>
 <body>
 <header>
-  <div class="ttl">🍳 パパッと<span class="em">Cook</span></div>
+  <div class="ttl">🍳 パパッと<span class="em">Cook</span><span class="zhName" id="appNameZh" style="display:none;">｜今晚煮什麼</span></div>
   <div class="sub">持っている食材から、今夜の一品を決めるお手伝い</div>
 </header>
 <main>
@@ -4857,6 +4859,8 @@ var STORIES = [
     "保存は、乾燥と湿気の両方に気をつけるのがコツです。泥つきのものは泥を落とさず、新聞紙などに包んで涼しい場所に立てて置くと、日持ちしやすいと言われています。冷蔵庫に入れる場合は、長さを半分に切ってポリ袋などに入れ、野菜室へ。\n\n使い切れないときは、小口切りや斜め切りにしてから冷凍しておく方法もあります。凍ったまま汁物や炒め物に加えられて便利です。寒い日に、甘くとろける長ねぎを鍋いっぱいに。地味に見えて、冬の食卓をしっかり支えてくれる頼もしい野菜です。"
   ] }
 ];
+/* 台湾版: 台湾限定の小話（stories_tw_local.json）を STORIES の末尾へ追加 */
+(function(){ var tws = [{"badge": "台灣", "cat": "食の文化", "d": "2026年11月22日", "p": ["在台灣想做日本料理時，最容易想念的香草，大概就是紫蘇了。生魚片旁邊的大葉、紫蘇捲、天婦羅裡的那一片綠，在日本的超市隨手可得，在台灣卻常常找了半天也看不到。\n\n不過，台灣有一位香氣個性很相近的在地夥伴，就是九層塔。這一篇，就來聊聊這兩位其實是「親戚」的香草。", "紫蘇和九層塔都屬於唇形科。紫蘇是紫蘇屬，葉子柔軟、香氣清雅，帶著一點薄荷般的清涼感；九層塔則是羅勒屬的一員，是甜羅勒在台灣落地生根的品種。\n\n九層塔的香氣裡有丁香酚的辛香，聞起來比紫蘇更強烈、更有存在感。簡單說，紫蘇是輕聲細語型，九層塔是大方熱情型。", "九層塔這個名字，據說是因為它的花序會一層一層往上開，遠遠看像一座小小的塔。在台灣，它是餐桌上的靈魂人物：三杯雞少不了它，鹹酥雞出鍋前要抓一把，炒海瓜子也要靠它把香氣撐起來。\n\n可以說，九層塔在台灣料理裡的地位，就像紫蘇在日本料理裡一樣，是「少了它就不對」的那種存在。", "那麼，做日本料理時該怎麼用九層塔代替紫蘇呢？重點是：九層塔的香氣遇熱會更立體，所以加熱的料理最合適。拿來炸天婦羅、放進炒菜、拌義大利麵，或在味噌湯起鍋前加幾片，都能讓香氣和料理融在一起，違和感很低。\n\n反過來，如果是生魚片的配葉、紫蘇捲這種生食的場合，九層塔的味道會比較搶戲。建議先從少量開始，習慣了再慢慢加量。", "保存方法上，兩位親戚的脾氣不太一樣。紫蘇怕乾燥，可以像插花一樣把莖泡在水裡，再鬆鬆地套上袋子冷藏，能多撐幾天。\n\n九層塔則是怕冷又怕水，洗過之後更容易變黑。買回家先不要洗，用廚房紙巾包好放進保鮮袋冷藏，並且盡早用完。如果一次買太多，摘下葉子做成青醬冷凍起來，也是不錯的辦法。", "與其把九層塔當作「找不到紫蘇時的將就」，不如把它看成一位值得認識的新朋友。同一個家族，不同的成長環境，長出了不同的個性。\n\n下次做日式炒物或天婦羅時，試著放幾片九層塔吧。那股熟悉又有點驚喜的香氣，或許會為你的餐桌打開一扇新的門。"], "t": "九層塔和日本紫蘇，是同家族的親戚", "tw": true}, {"badge": "台灣", "cat": "調理の知恵", "d": "2026年11月20日", "p": ["看日本食譜做菜時，材料表裡常常會出現「片栗粉」。第一次看到的人可能愣一下：這是什麼粉？其實它在廚房裡的位置，就和台灣的太白粉幾乎一模一樣——勾芡、裹粉、讓湯汁亮亮的，都靠它。\n\n這一篇就來把這兩種粉的關係說清楚，以後看食譜就不會卡關了。", "先說片栗粉的身世。它原本是「片栗」這種山野小花根部的澱粉，產量很少；現在日本市面上賣的片栗粉，絕大多數其實是馬鈴薯澱粉，只是沿用了舊名字。\n\n台灣的太白粉，傳統上多半是樹薯（木薯）澱粉，也有馬鈴薯做的。兩者外觀都是細白粉末，分辨的方法很簡單：買的時候看一下包裝上的成分標示就知道了。", "勾芡的用法，兩種粉完全相同。先把粉和水用大約一比一到一比二的比例調開，做成芡汁，再在快關火的時候淋進鍋裡，快速攪拌，湯汁就會變得濃稠透亮。\n\n千萬不要把乾粉直接灑進熱湯裡，會結成一顆顆小塊，怎麼攪都攪不散。這一點，無論在日本還是台灣的廚房，都是共通的鐵則。", "不過，兩種粉還是有小小的個性差異。樹薯做的太白粉，醬汁放涼之後比較容易變黏、牽絲；馬鈴薯澱粉的片栗粉，如果勾芡之後一直滾煮，或是重複加熱，濃稠度會慢慢變稀。\n\n所以勾芡好的料理不要久煮，趁熱吃最剛好。如果是要做涼了吃的料理，勾芡可以比平常再稍微濃一點，補上放涼之後的變化。", "裹粉炸東西的時候，兩種粉也都是好手。日式唐揚雞裹上片栗粉，炸出來是輕脆薄透的外皮；在台灣用太白粉裹，一樣能做到這種口感。\n\n小訣竅是：裹好粉之後先靜置幾分鐘，讓粉和食材表面的水分融合一下，再下油鍋，粉就比較不會脫落。要注意的是，地瓜粉的顆粒感完全不同，那是台灣小吃酥炸的另一個世界，不要和太白粉搞混了。", "保存上，兩種粉都怕潮。開封後密封好，放在乾燥陰涼的地方，就能用很久。\n\n總結來說，大部分的家常料理，太白粉和片栗粉都可以互相替代，不用特地從日本買。先從少量試起，找到自己喜歡的濃稠度，你的勾芡就會越來越穩定。"], "t": "太白粉和片栗粉，勾芡炸物都靠它們", "tw": true}, {"badge": "台灣", "cat": "食の文化", "d": "2026年11月18日", "p": ["照著日本食譜做了一鍋燉菜，味道卻比在日本吃到的甜。先別懷疑自己的手藝，問題常常出在醬油身上：台灣的醬油，天生就帶著一點甜。\n\n這一篇，就來聊聊這股甜味是從哪裡來的，以及在台灣的廚房裡，怎麼把日本食譜煮出「剛剛好」的味道。", "台灣醬油會甜，有幾個原因。一是傳統釀造的脈絡：蔭油、壺底油這類老醬油，講究甘醇的底味；二是氣候與口味的習慣，台灣天氣熱，飲食偏好在鹹味之後帶一點甘，南部尤其明顯。\n\n所以像金蘭這類常見的台灣醬油，在釀造或調配時常會加入糖，入口是先甘後鹹。對台灣人來說，這就是「家裡的味道」。", "還有一位更甜的角色，叫醬油膏。它加了澱粉增稠，質地濃濃的，甜味也更明顯。醬油膏拿來當照燒風醬汁的基底非常方便，雞肉或魚煎好後裹上一層，亮晶晶的照燒感就出來了。\n\n但要注意，醬油膏不能直接當一般醬油使用。拿它來煮湯或燉菜，很容易甜過頭，稠度也會怪怪的。", "那麼，用台灣醬油做日本料理時，該怎麼調整？最穩妥的方法是：先把食譜裡的糖減到大約三分之二，煮好之後試味道，再決定要不要補一點醬油、或是補一點甜。\n\n味醂本身也有甜味，如果食譜同時用了味醂和糖，兩邊的甜要一起考慮。先減糖、不減醬油，是比較不容易失敗的順序，因為鹹味淡了還能補，甜味過了就很難救。", "至於什麼時候該用日本醬油？日常的燉菜、炒菜，用台灣醬油完全沒問題，調整好甜味就很好吃。但如果是生魚片、壽司，或是想重現日本家庭的那種味道，日本醬油鹹香俐落的個性會比較對味——在台灣的超市，也能找到台灣生產的龜甲萬。\n\n買醬油時看一眼成分表，如果「糖」排得比較前面，就知道這瓶是偏甜的風格，心裡先有個底。", "甜，不是台灣醬油的缺點，而是它的個性。就像每個地方的醬油，都帶著當地的水土和飲食記憶。\n\n理解了這份個性，日本食譜到了台灣的廚房，一樣能煮出剛剛好的味道。下次燉菜覺得太甜時，先別急著否定食譜，回頭看看手邊那瓶醬油吧。"], "t": "台灣的醬油，為什麼帶甜味？", "tw": true}]; tws.forEach(function(s){ STORIES.push(s); }); })();
 var storyCur = -1;
 var storyTab = "すべて";
 var STORY_CATS = [["すべて","📚"],["旬の食材","🥬"],["保存の話","🧊"],["調理の知恵","🍳"],["食の文化","📖"]];
@@ -4979,7 +4983,7 @@ function renderStory(){
   var lead = pages0[0].split("\n\n")[0];
   if(lead.length > 95) lead = lead.slice(0, 95) + "…";
   box.innerHTML = '<div><span class="catChip" style="background:' + catColor(st0.cat) + ';">' + esc(st0.cat) + "</span> " +
-    '<span class="note">' + esc(st0.d) + "</span> " + (storyIsRead(storyCur) ? '<span class="readBadge">✓ 読了</span>' : '<span class="unreadBadge">未読</span>') + "</div>" +
+    '<span class="note">' + esc(st0.d) + "</span> " + (storyIsRead(storyCur) ? '<span class="readBadge">✓ 読了</span>' : '<span class="unreadBadge">未読</span>') + (st0.badge ? ' <span class="twBadge">' + esc(st0.badge) + "</span>" : "") + "</div>" +
     '<div style="font-weight:800; font-size:19px; margin:8px 0 6px;">' + esc(st0.t) + "</div>" +
     "<p style=\"margin:0 0 4px;\">" + esc(lead) + "</p>" +
     '<div class="note">全' + pages0.length + 'ページの読み物です</div>' +
@@ -5002,7 +5006,7 @@ function renderStory(){
     shown++;
     var card = document.createElement("div");
     card.className = "storyCard";
-    card.innerHTML = '<div><span class="catChip" style="background:' + catColor(st.cat) + ';">' + esc(st.cat) + "</span> " + (storyIsRead(i) ? '<span class="readBadge">✓ 読了</span>' : '<span class="unreadBadge">未読</span>') + "</div>" +
+    card.innerHTML = '<div><span class="catChip" style="background:' + catColor(st.cat) + ';">' + esc(st.cat) + "</span> " + (storyIsRead(i) ? '<span class="readBadge">✓ 読了</span>' : '<span class="unreadBadge">未読</span>') + (st.badge ? ' <span class="twBadge">' + esc(st.badge) + "</span>" : "") + "</div>" +
       '<div class="ttl">' + esc(st.t) + "</div>" +
       '<div class="note">' + esc(st.d) + "／全" + storyPages(st).length + "ページ</div>";
     card.onclick = (function(idx){ return function(){ openReader(idx); }; })(i);
@@ -7340,6 +7344,11 @@ function updateLangBtns(){
     b.style.fontWeight = on ? "800" : "";
   });
 }
+/* ヘッダータイトルの中国語名併記は zh モードの時だけ表示する */
+function updateAppTitle(){
+  var el = document.getElementById("appNameZh");
+  if(el) el.style.display = (cur === "zh") ? "" : "none";
+}
 function setLang(l){
   if(l !== "ja" && l !== "zh") return;
   cur = l;
@@ -7354,6 +7363,7 @@ function setLang(l){
     document.documentElement.lang = "ja";
   }
   updateLangBtns();
+  updateAppTitle();
 }
 window.PAPATTO_I18N = { setLang: setLang, getLang: function(){ return cur; }, ingToZh: trIng, toJa: zhToJa, tr: trText };
 
@@ -7366,6 +7376,7 @@ if(cur === "zh"){
   startObserver();
 }
 updateLangBtns();
+updateAppTitle();
 })();
 </script>
 
