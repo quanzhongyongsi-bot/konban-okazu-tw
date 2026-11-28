@@ -7108,7 +7108,7 @@ if(typeof window !== "undefined" && typeof document !== "undefined"){
    - 言語設定は localStorage の別キー "papattoLang" に保存（konbanOkazuV1 は不変）。 */
 (function(){
 "use strict";
-var LANG_KEY = "papattoLang";
+var LANG_KEY = "papattoLangTw";
 var cur = "zh"; /* 台湾版: 初回既定は繁體中文（保存済みの選択があれば上で上書きされる） */
 try{ var saved = localStorage.getItem(LANG_KEY); if(saved === "zh" || saved === "ja") cur = saved; }catch(e){}
 
